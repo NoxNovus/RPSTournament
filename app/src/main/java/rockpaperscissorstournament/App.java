@@ -6,6 +6,8 @@ public class App {
     }
 
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+        for (Class<?> c : ClassLoader.allImplementers(RPSBot.class)) {
+            System.out.println("Loaded bot: " + c);
+        }
     }
 }
