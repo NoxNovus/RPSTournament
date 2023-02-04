@@ -30,8 +30,10 @@ public final class ClassLoader {
      * @param clazz - the class to check for implementers of
      * @return the set of classes
      */
-    public static Set<Class<?>> allImplementers(Class<?> clazz) {
-        return allClasses(x -> clazz.isAssignableFrom(x) && !x.equals(clazz));
+    public static <E> Set<Class<E>> allImplementers(Class<E> clazz) {
+        return allClasses(x -> clazz.isAssignableFrom(x) && !x.equals(clazz)).stream()
+                .map(x -> (Class<E>) x)
+                .collect(Collectors.toSet());
     }
 
     /**
