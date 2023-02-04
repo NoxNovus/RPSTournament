@@ -33,3 +33,9 @@ tasks.named('test') {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
 }
+
+tasks.named('clean') {
+    // Delete the build directory before building.
+    delete 'build'
+    delete 'app/bin'
+}
