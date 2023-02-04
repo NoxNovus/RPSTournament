@@ -10,8 +10,8 @@ import java.io.Serializable;
  * necessary. This allows you to
  * create a bot that can learn over a large series of matches.
  * 
- * The bot must be created using the createBot method, which should return an
- * instance of the bot.
+ * The bot <b> must have an empty constructor </b> so that it can be
+ * instantiated by the tournament manager.
  * This bot will be used to fight only one other opponent in a series of
  * matches.
  * 
@@ -27,27 +27,20 @@ import java.io.Serializable;
  * </ol>
  */
 public interface RPSBot extends Serializable {
-    public static final long serialVersionUID = 1L;
 
     /**
-     * The name of the bot
+     * @return The name of the bot
      */
-    public static final String NAME = "Unnamed Bot";
+    public String getName();
 
     /**
-     * The description of the bot
-     * This is a great place to put your name, bot details, etc
-     */
-    public static final String DESCRIPTION = "";
-
-    /**
-     * Called when the bot encounters an opponent
      * 
-     * @param opponentID The ID of the opponent. Will be different over multiple
-     *                   matches
-     * @return The bot to use for the match
+     * This is a great place to put your name, bot details, etc
+     * 
+     * @return a description for bot
      */
-    public static void createBot(int opponentID) {
+    public default String getDescription() {
+        return "No description provided";
     }
 
     /**
