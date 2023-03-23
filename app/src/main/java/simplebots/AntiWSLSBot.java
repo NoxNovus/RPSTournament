@@ -1,4 +1,4 @@
-package basicbots;
+package simplebots;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -31,14 +31,16 @@ public class AntiWSLSBot implements RPSBot {
         // get my move and outcome
         RPSOutcome outcome = RPSOutcome.getOutcome(myMoveRaw, opponentMoveRaw);
 
-        //If you win, switch to the thing that would beat the thing that you just played.
-        if(outcome.equals(RPSOutcome.WIN)) {
-            this.nextMove = RPSMove.counter(RPSMove.counter(myMoveRaw));            
-        } 
-        
-        //If you lose, switch to the thing that beats the thing your opponent just played.
+        // If you win, switch to the thing that would beat the thing that you just
+        // played.
+        if (outcome.equals(RPSOutcome.WIN)) {
+            this.nextMove = RPSMove.counter(RPSMove.counter(myMoveRaw));
+        }
+
+        // If you lose, switch to the thing that beats the thing your opponent just
+        // played.
         else { // draw or loss
             this.nextMove = RPSMove.counter(opponentMoveRaw);
         }
-    } 
+    }
 }

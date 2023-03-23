@@ -1,4 +1,4 @@
-package basicbots;
+package simplebots;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -32,10 +32,10 @@ public class WSLSBot implements RPSBot {
         RPSOutcome outcome = RPSOutcome.getOutcome(myMoveRaw, opponentMoveRaw);
 
         // win stay
-        if(outcome.equals(RPSOutcome.WIN)) {
+        if (outcome.equals(RPSOutcome.WIN)) {
             this.nextMove = myMoveRaw;
         } else { // draw or loss, shift to beat opp's last throw
             this.nextMove = RPSMove.counter(opponentMoveRaw);
         }
-    } 
+    }
 }

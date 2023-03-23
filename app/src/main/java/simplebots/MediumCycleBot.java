@@ -1,4 +1,4 @@
-package basicbots;
+package simplebots;
 
 import rockpaperscissorstournament.RPSBot;
 import rockpaperscissorstournament.RPSMove;
@@ -13,7 +13,7 @@ public class MediumCycleBot implements RPSBot {
 
     public RPSMove getMove() {
         cycle++;
-        if(cycle > 10) {
+        if (cycle > 10) {
             cycle = 0;
             current = (current + 1) % 3;
         }
