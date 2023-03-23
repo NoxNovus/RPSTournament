@@ -20,7 +20,7 @@ import java.io.Serializable;
  * 
  * A match can be represented as a series of method calls:
  * <ol>
- * <li>createBot is called to create the bot</li>
+ * <li>an instance of the bot is constructed</li>
  * <li>getMove is called to get the bot's first move</li>
  * <li>roundResults is called to tell the bot the result of the round</li>
  * <li>Repeat stpes 2 and 3 until the match is over</li>
