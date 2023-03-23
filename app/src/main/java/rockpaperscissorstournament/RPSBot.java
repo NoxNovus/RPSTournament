@@ -52,9 +52,11 @@ public interface RPSBot extends Serializable {
 
     /**
      * Called when both bots have played a move
+     * Override this method if a bot needs to receive 
      * 
      * @param move The move the bot played
      */
     public default void roundResults(RPSMove myMove, RPSMove opponentMove) {
+        // do nothing by default 
     }
 }
