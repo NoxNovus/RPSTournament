@@ -49,4 +49,21 @@ public final class Permutate {
             }
         };
     }
+
+    /**
+     * Returns an iterator over all combinations of the elements of a and b.
+     * 
+     * @param <E> The type of the elements of a.
+     * @param <T> The type of the elements of b.
+     * @param a   The first iterator.
+     * @param b   The second iterator.
+     * @return An iterator over all combinations of the elements of a and b.
+     *         Element's .equals() method is used to check for duplicates.
+     *         Note that duplicates and null values are not checked for
+     */
+    public static <E, T> Iterator<Entry<E, T>> iterCombinations(Iterator<E> a, Iterator<T> b) {
+        // Same as iterPermutations, but ignores an entry when E.equals(T)
+        // WIP
+        return iterPermutations(a, b);
+    }
 }

@@ -127,7 +127,7 @@ public final class ClassLoader {
     }
 
     public static void main(String[] args) {
-        // What you've all been waiting for:
+
         System.out.println("All Classpaths:");
         for (File f : allClasspaths())
             System.out.println("\t" + f.getPath());

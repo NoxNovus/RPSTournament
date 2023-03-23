@@ -14,18 +14,18 @@ import java.util.stream.Collectors;
  * and another Arbiter
  */
 public class Arbiter {
-    public static final int BEST_OF = 10_000;
+    private static final int BEST_OF = 10_000;
 
     public static Set<Arbiter> loadAllArbitrators() {
         Set<Class<RPSBot>> allBots = ClassLoader.allImplementers(RPSBot.class);
         return allBots.stream().map(Arbiter::new).collect(Collectors.toSet());
     }
 
-    private Class<RPSBot> botClass;
+    private Class<? extends RPSBot> botClass;
     private String name;
     private String description;
 
-    public Arbiter(Class<RPSBot> botClass) {
+    public Arbiter(Class<? extends RPSBot> botClass) {
         this.botClass = botClass;
 
         // Create a bot that plays no games,
@@ -45,9 +45,11 @@ public class Arbiter {
 
     public RPSBot getNewBot() {
         try {
-            return botClass.getConstructor().newInstance();
+            java.lang.reflect.Constructor<?> ctor = botClass.getConstructor();
+            return (RPSBot) ctor.newInstance();
         } catch (InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException
                 | SecurityException e) {
+            e.printStackTrace();
             return null;
         }
     }
