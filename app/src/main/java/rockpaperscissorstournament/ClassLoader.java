@@ -21,6 +21,7 @@ import java.util.stream.Collectors;
  * Do so at your own risk, we've already lost 40+
  * interns and counting.
  */
+@SuppressWarnings("unchecked")
 public final class ClassLoader {
 
     /**
@@ -42,7 +43,7 @@ public final class ClassLoader {
      * @param filter the predicate to filter by
      * @return a set of all classes in the classpath that match the predicate
      */
-    public static Set<Class<?>> allClasses(Predicate<? super Class> filter) {
+    public static Set<Class<?>> allClasses(Predicate<? super Class<?>> filter) {
         return allClasses().parallelStream().filter(filter).collect(Collectors.toSet());
     }
 
