@@ -57,7 +57,7 @@ public class App {
         }
 
         // Print elo rankings
-        System.out.println("Bot Elo rankings:");
+        System.out.println("FINAL TOURNAMENT ELO RANKINGS:");
         for (Arbiter a : allBots)
             System.out.println(a.getName() + ": " + eloRankings.get(a));
     }

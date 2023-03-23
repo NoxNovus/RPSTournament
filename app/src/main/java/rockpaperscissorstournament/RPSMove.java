@@ -58,6 +58,23 @@ public enum RPSMove {
     }
 
     /**
+     * Returns the counter of this move.
+     * @param move the move to counter
+     * @return the move that counters the specified one
+     */
+    public static RPSMove counter(RPSMove move) {
+        switch (move) {
+            case ROCK:
+                return PAPER;
+            case PAPER:
+                return SCISSORS;
+            case SCISSORS:
+                return ROCK;
+        }
+        return null;
+    }
+
+    /**
      * Returns true if this move won against the given move.
      * @param move the move to check
      * @return true if this move won against the given move, false if it was a tie or lost

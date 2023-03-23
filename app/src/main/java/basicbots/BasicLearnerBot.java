@@ -24,7 +24,6 @@ public class BasicLearnerBot implements RPSBot {
 
     public RPSMove getMove() {
         double maxWinRate = Collections.max(winRates);
-        System.out.println("Current win rates: " + winRates);
         return RPSMove.values()[winRates.indexOf(maxWinRate)];
     }
 

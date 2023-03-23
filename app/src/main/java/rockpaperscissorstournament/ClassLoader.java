@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
  * extend this, touch it, view it, use it,
  * or even think about it.
  * 
- * Do so at your own risk, we've already lost 39+
+ * Do so at your own risk, we've already lost 40+
  * interns and counting.
  */
 public final class ClassLoader {
