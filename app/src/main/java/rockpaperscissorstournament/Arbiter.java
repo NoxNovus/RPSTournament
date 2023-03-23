@@ -82,7 +82,9 @@ public class Arbiter {
             }
         }
 
-        if (bot1Wins > bot2Wins)
+        if (draws >= BEST_OF / 2)
+            return RPSOutcome.DRAW;
+        else if (bot1Wins > bot2Wins)
             return RPSOutcome.WIN;
         else if (bot2Wins > bot1Wins)
             return RPSOutcome.LOSE;
