@@ -5,27 +5,27 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
- * The Arbitrator class is responsible for a single bot type.
+ * The Arbiter class is responsible for a single bot type.
  * 
  * It wraps RPSBot instances, protecting information such as
  * win/loss records, elo, and history.
  * 
  * It also "arbitrates"/plays a series of matches between bots of that type
- * and another Arbitrator
+ * and another Arbiter
  */
-public class Arbitrator {
+public class Arbiter {
     public static final int BEST_OF = 100;
 
-    public static Set<Arbitrator> loadAllArbitrators() {
+    public static Set<Arbiter> loadAllArbitrators() {
         Set<Class<RPSBot>> allBots = ClassLoader.allImplementers(RPSBot.class);
-        return allBots.stream().map(Arbitrator::new).collect(Collectors.toSet());
+        return allBots.stream().map(Arbiter::new).collect(Collectors.toSet());
     }
 
     private Class<RPSBot> botClass;
     private String name;
     private String description;
 
-    public Arbitrator(Class<RPSBot> botClass) {
+    public Arbiter(Class<RPSBot> botClass) {
         this.botClass = botClass;
 
         // Create a bot that plays no games,
@@ -52,7 +52,7 @@ public class Arbitrator {
         }
     }
 
-    public RPSOutcome playMatch(Arbitrator opponent) {
+    public RPSOutcome playMatch(Arbiter opponent) {
         RPSBot bot1 = getNewBot();
         RPSBot bot2 = opponent.getNewBot();
 
@@ -97,9 +97,9 @@ public class Arbitrator {
     public boolean equals(Object o) {
         if (o == this)
             return true;
-        if (!(o instanceof Arbitrator))
+        if (!(o instanceof Arbiter))
             return false;
-        Arbitrator other = (Arbitrator) o;
+        Arbiter other = (Arbiter) o;
         return botClass.equals(other.botClass);
     }
 

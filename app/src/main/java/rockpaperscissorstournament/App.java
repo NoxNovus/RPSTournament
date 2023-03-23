@@ -13,20 +13,20 @@ public class App {
     }
 
     public static void main(String[] args) {
-        HashMap<Arbitrator, Integer> eloRankings = new HashMap<>();
-        Set<Arbitrator> allBots = Arbitrator.loadAllArbitrators();
+        HashMap<Arbiter, Double> eloRankings = new HashMap<>();
+        Set<Arbiter> allBots = Arbiter.loadAllArbitrators();
 
         // Initialize elo rankings
-        for (Arbitrator a : allBots)
-            eloRankings.put(a, 1000);
+        for (Arbiter a : allBots)
+            eloRankings.put(a, 1000.0);
 
         // Play all possible matches
-        Iterator<Entry<Arbitrator, Arbitrator>> iter = iterPermutations(allBots.iterator(), allBots.iterator());
+        Iterator<Entry<Arbiter, Arbiter>> iter = iterPermutations(allBots.iterator(), allBots.iterator());
 
         while (iter.hasNext()) {
-            Entry<Arbitrator, Arbitrator> x = iter.next();
-            Arbitrator a = x.getKey();
-            Arbitrator b = x.getValue();
+            Entry<Arbiter, Arbiter> x = iter.next();
+            Arbiter a = x.getKey();
+            Arbiter b = x.getValue();
 
             if (a == null || b == null)
                 continue;
@@ -40,8 +40,8 @@ public class App {
             else
                 System.out.println((outcome == RPSOutcome.WIN ? a.getName() : b.getName()) + " wins");
 
-            int newAElo = EloLib.calculateElo(eloRankings.get(a), eloRankings.get(b), outcome);
-            int newBElo = EloLib.calculateElo(eloRankings.get(b), eloRankings.get(a), outcome.getOpposite());
+            double newAElo = EloLib.calculateElo(eloRankings.get(a), eloRankings.get(b), outcome);
+            double newBElo = EloLib.calculateElo(eloRankings.get(b), eloRankings.get(a), outcome.getOpposite());
             System.out.println(
                     a.getName() + " elo: " + eloRankings.get(a) + " -> " + newAElo + " ("
                             + (newAElo - eloRankings.get(a)) + ")");
@@ -56,7 +56,7 @@ public class App {
 
         // Print elo rankings
         System.out.println("Bot Elo rankings:");
-        for (Arbitrator a : allBots)
+        for (Arbiter a : allBots)
             System.out.println(a.getName() + ": " + eloRankings.get(a));
     }
 }
