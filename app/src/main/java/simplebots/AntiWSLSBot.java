@@ -30,7 +30,7 @@ public class AntiWSLSBot implements RPSBot {
         // If you win, switch to the thing that would beat the thing that you just
         // played.
         if (outcome.equals(RPSOutcome.WIN)) {
-            this.nextMove = RPSMove.counter(RPSMove.counter(myMoveRaw));
+            this.nextMove = RPSMove.counter(myMoveRaw);
         }
 
         // If you lose, switch to the thing that beats the thing your opponent just
