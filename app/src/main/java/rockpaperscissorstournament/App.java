@@ -22,6 +22,7 @@ public class App {
 
         // Play all possible matches
         Iterator<Entry<Arbiter, Arbiter>> iter = iterPermutations(allBots.iterator(), allBots.iterator());
+        long startTime = System.currentTimeMillis();
 
         while (iter.hasNext()) {
             Entry<Arbiter, Arbiter> x = iter.next();
@@ -60,5 +61,7 @@ public class App {
         allBots.stream()
                 .sorted((a, b) -> Double.compare(eloRankings.get(b), eloRankings.get(a)))
                 .forEach(a -> System.out.printf("%s: %.2f%n", a.getName(), eloRankings.get(a)));
+
+        System.out.printf("\nTotal time: %.2f seconds%n", (System.currentTimeMillis() - startTime) / 1000.0);
     }
 }
