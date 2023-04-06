@@ -42,12 +42,13 @@ public class App {
 
             double newAElo = EloLib.calculateElo(eloRankings.get(a), eloRankings.get(b), outcome);
             double newBElo = EloLib.calculateElo(eloRankings.get(b), eloRankings.get(a), outcome.getOpposite());
-            System.out.println(
-                    a.getName() + " elo: " + eloRankings.get(a) + " -> " + newAElo + " ("
-                            + (newAElo - eloRankings.get(a)) + ")");
-            System.out.println(
-                    b.getName() + " elo: " + eloRankings.get(b) + " -> " + newBElo + " ("
-                            + (newBElo - eloRankings.get(b)) + ")");
+            System.out.printf(
+                    "%s elo: %.2f -> %.2f (%+.2f)%n",
+                    a.getName(), eloRankings.get(a), newAElo, (newAElo - eloRankings.get(a)));
+            System.out.printf(
+                    "%s elo: %.2f -> %.2f (%+.2f)%n",
+                    b.getName(), eloRankings.get(b), newBElo, (newBElo - eloRankings.get(b)));
+
             eloRankings.put(a, newAElo);
             eloRankings.put(b, newBElo);
 
@@ -56,7 +57,8 @@ public class App {
 
         // Print elo rankings
         System.out.println("FINAL TOURNAMENT ELO RANKINGS:");
-        for (Arbiter a : allBots)
-            System.out.println(a.getName() + ": " + eloRankings.get(a));
+        allBots.stream()
+                .sorted((a, b) -> Double.compare(eloRankings.get(b), eloRankings.get(a)))
+                .forEach(a -> System.out.printf("%s: %.2f%n", a.getName(), eloRankings.get(a)));
     }
 }
