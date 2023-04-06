@@ -18,7 +18,12 @@ public class Arbiter {
 
     public static Set<Arbiter> loadAllArbitrators() {
         Set<Class<RPSBot>> allBots = ClassLoader.allImplementers(RPSBot.class);
-        return allBots.stream().map(Arbiter::new).collect(Collectors.toSet());
+        // Do not load subclass bots
+        // Bandaid fix for bigger problem
+        // Could probably be solved with an annotation
+        return allBots.stream()
+                .filter(c -> c.getEnclosingClass() == null)
+                .map(Arbiter::new).collect(Collectors.toSet());
     }
 
     private Class<? extends RPSBot> botClass;
