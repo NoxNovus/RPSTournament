@@ -9,7 +9,6 @@ import java.util.Queue;
 
 import rockpaperscissorstournament.RPSBot;
 import rockpaperscissorstournament.RPSMove;
-import rockpaperscissorstournament.RPSOutcome;
 
 public class PredictorBot implements RPSBot {
     // Predicts the next move of the opponent based on the last X moves
@@ -60,6 +59,9 @@ public class PredictorBot implements RPSBot {
                 maxTieChanceMove = possibleMove;
             }
         }
+
+        if (maxWinChance < 0.33)
+            return maxTieChanceMove;
 
         return maxWinChanceMove;
     }
