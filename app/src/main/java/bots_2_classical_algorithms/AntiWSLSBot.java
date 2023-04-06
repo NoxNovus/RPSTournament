@@ -1,4 +1,4 @@
-package simplebots;
+package bots_2_classical_algorithms;
 
 import java.util.Random;
 
@@ -10,12 +10,12 @@ import rockpaperscissorstournament.RPSOutcome;
  * Inspired by this article: 
  * https://arstechnica.com/science/2014/05/win-at-rock-paper-scissors-by-knowing-thy-opponent/
  */
-public class BustedAntiWSLSBot implements RPSBot {
+public class AntiWSLSBot implements RPSBot {
     private Random rand = new Random();
     private RPSMove nextMove = RPSMove.values()[rand.nextInt(3)];
 
     public String getName() {
-        return "BustedAntiWSLSBot";
+        return "AntiWSLSBot";
     }
 
     public RPSMove getMove() {
@@ -30,7 +30,7 @@ public class BustedAntiWSLSBot implements RPSBot {
         // If you win, switch to the thing that would beat the thing that you just
         // played.
         if (outcome.equals(RPSOutcome.WIN)) {
-            this.nextMove = RPSMove.counter(RPSMove.counter(myMoveRaw));
+            this.nextMove = RPSMove.counter(myMoveRaw);
         }
 
         // If you lose, switch to the thing that beats the thing your opponent just

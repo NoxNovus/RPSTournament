@@ -2,7 +2,7 @@ package rockpaperscissorstournament;
 
 import java.util.Scanner;
 
-import basicbots.RandomBot;
+import bots_1_trivial.RandomBot;
 
 public class HumanVSRobot {
     private static Scanner scanner = new Scanner(System.in);

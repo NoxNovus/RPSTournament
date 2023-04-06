@@ -1,4 +1,4 @@
-package basicbots;
+package bots_1_trivial;
 
 import java.util.Random;
 

@@ -1,16 +1,16 @@
-package basicbots;
+package bots_1_trivial;
 
 import rockpaperscissorstournament.RPSBot;
 import rockpaperscissorstournament.RPSMove;
 
-public class ScissorsBot implements RPSBot {
+public class RockBot implements RPSBot {
 
     public String getName() {
-        return "ScissorsBot";
+        return "RockBot";
     }
 
     public RPSMove getMove() {
-        return RPSMove.SCISSORS;
+        return RPSMove.ROCK;
     }
 
 }

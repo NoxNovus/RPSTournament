@@ -1,4 +1,4 @@
-package bots;
+package bots_3_learning;
 
 import java.util.ArrayList;
 import java.util.Arrays;

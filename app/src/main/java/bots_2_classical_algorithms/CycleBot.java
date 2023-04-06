@@ -1,4 +1,4 @@
-package simplebots;
+package bots_2_classical_algorithms;
 
 import rockpaperscissorstournament.RPSBot;
 import rockpaperscissorstournament.RPSMove;
