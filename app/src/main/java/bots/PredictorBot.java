@@ -40,10 +40,10 @@ public class PredictorBot implements RPSBot {
 
             // Get the observations from previous rounds
             int[] opponentMoves = observations.getOrDefault(lastMovesRaw, new int[] { 1, 1, 1 });
+            double total = Arrays.stream(opponentMoves).sum();
 
             // Compute the win chance
-            double winChance = (double) opponentMoves[possibleMove.strength().ordinal()]
-                    / Arrays.stream(opponentMoves).sum();
+            double winChance = opponentMoves[possibleMove.strength().ordinal()] / total;
 
             if (winChance > maxWinChance) {
                 maxWinChance = winChance;
@@ -51,8 +51,7 @@ public class PredictorBot implements RPSBot {
             }
 
             // Compute the tie chance
-            double tieChance = (double) opponentMoves[possibleMove.ordinal()]
-                    / Arrays.stream(opponentMoves).sum();
+            double tieChance = opponentMoves[possibleMove.ordinal()] / total;
 
             if (tieChance > maxTieChance) {
                 maxTieChance = tieChance;
