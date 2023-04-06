@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
  * and another Arbiter
  */
 public class Arbiter {
-    private static final int BEST_OF = 10_000;
+    private static final int BEST_OF = 500_000;
 
     public static Set<Arbiter> loadAllArbitrators() {
         Set<Class<RPSBot>> allBots = ClassLoader.allImplementers(RPSBot.class);
