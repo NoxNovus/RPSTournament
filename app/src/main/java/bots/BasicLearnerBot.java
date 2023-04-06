@@ -1,4 +1,4 @@
-package simplebots;
+package bots;
 
 import java.util.Arrays;
 import java.util.Collections;
