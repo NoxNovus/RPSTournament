@@ -9,16 +9,21 @@ public final class EloLib {
     private static final int K = 32;
 
     public static double calculateElo(double myElo, double oppElo, RPSOutcome matchResult) {
-        double mySkillDiff = Math.pow(10, ((myElo - oppElo) / 400));
-        double myWinChance = (1.0 / (1.0 + mySkillDiff));
+        double myTransformed = Math.pow(10, (myElo / 400));
+        double oppTransformed = Math.pow(10, (oppElo / 400));
+        double transformedSkillDiff = myTransformed + oppTransformed;
 
-        // result of the game as 0 for loss, 0.5 for draw, 1 for win
+        double myExpectation = (myTransformed) / (transformedSkillDiff);
+
+        //result of the game as 0 for loss, 0.5 for draw, 1 for win
         double result = ((double) matchResult.ordinal() / 2);
-        double delta = K * (result - myWinChance);
-
-        return myElo + delta;
+        return myElo + (K * (result - myExpectation));
     }
 
     private EloLib() {
+    }
+
+    public static void main(String[] args) {
+        System.out.println(calculateElo(2400, 2000, RPSOutcome.WIN));
     }
 }
