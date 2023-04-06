@@ -14,12 +14,12 @@ public class RPSMoveTest {
         assertNull(RPSMove.getWinner(RPSMove.SCISSORS, RPSMove.SCISSORS));
     }
 
-    @Test 
+    @Test
     void testWinsAgainst() {
         assertTrue(RPSMove.ROCK.winsAgainst(RPSMove.SCISSORS));
         assertTrue(RPSMove.PAPER.winsAgainst(RPSMove.ROCK));
         assertTrue(RPSMove.SCISSORS.winsAgainst(RPSMove.PAPER));
-        
+
         assertFalse(RPSMove.ROCK.winsAgainst(RPSMove.ROCK));
         assertFalse(RPSMove.PAPER.winsAgainst(RPSMove.PAPER));
         assertFalse(RPSMove.SCISSORS.winsAgainst(RPSMove.SCISSORS));
@@ -27,5 +27,19 @@ public class RPSMoveTest {
         assertFalse(RPSMove.ROCK.winsAgainst(RPSMove.PAPER));
         assertFalse(RPSMove.PAPER.winsAgainst(RPSMove.SCISSORS));
         assertFalse(RPSMove.SCISSORS.winsAgainst(RPSMove.ROCK));
+    }
+
+    @Test
+    void testWeakness() {
+        assertEquals(RPSMove.PAPER, RPSMove.ROCK.weakness());
+        assertEquals(RPSMove.SCISSORS, RPSMove.PAPER.weakness());
+        assertEquals(RPSMove.ROCK, RPSMove.SCISSORS.weakness());
+    }
+
+    @Test
+    void testStrength() {
+        assertEquals(RPSMove.SCISSORS, RPSMove.ROCK.strength());
+        assertEquals(RPSMove.ROCK, RPSMove.PAPER.strength());
+        assertEquals(RPSMove.PAPER, RPSMove.SCISSORS.strength());
     }
 }

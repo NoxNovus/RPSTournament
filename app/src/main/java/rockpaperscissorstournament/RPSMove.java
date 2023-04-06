@@ -24,8 +24,10 @@ public enum RPSMove {
 
     /**
      * Returns the move that corresponds to the given name.
+     * 
      * @param name the name of the move
-     * @return the move that corresponds to the given name, or null if no such move exists
+     * @return the move that corresponds to the given name, or null if no such move
+     *         exists
      */
     public static RPSMove fromString(String name) {
         for (RPSMove move : RPSMove.values()) {
@@ -38,6 +40,7 @@ public enum RPSMove {
 
     /**
      * Returns the winner of the given moves.
+     * 
      * @param move1 the first move
      * @param move2 the second move
      * @return the winner of the given moves, or null if there is no winner
@@ -58,7 +61,9 @@ public enum RPSMove {
     }
 
     /**
-     * Returns the counter of this move.
+     * Returns the counter of this move, that is to say,
+     * the move that beats this one.
+     * 
      * @param move the move to counter
      * @return the move that counters the specified one
      */
@@ -76,10 +81,26 @@ public enum RPSMove {
 
     /**
      * Returns true if this move won against the given move.
+     * 
      * @param move the move to check
-     * @return true if this move won against the given move, false if it was a tie or lost
+     * @return true if this move won against the given move, false if it was a tie
+     *         or lost
      */
     public boolean winsAgainst(RPSMove move) {
         return getWinner(this, move) == this;
+    }
+
+    /**
+     * @return Returns the move that beats this one.
+     */
+    public RPSMove weakness() {
+        return counter(this);
+    }
+
+    /**
+     * @return Returns the move that loses against this one.
+     */
+    public RPSMove strength() {
+        return counter(counter(this));
     }
 }
