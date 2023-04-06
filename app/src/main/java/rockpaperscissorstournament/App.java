@@ -28,7 +28,7 @@ public class App {
             Arbiter a = x.getKey();
             Arbiter b = x.getValue();
 
-            if (a == null || b == null)
+            if (a == null || b == null || a.equals(b))
                 continue;
 
             System.out.println(a.getName() + " vs " + b.getName());
