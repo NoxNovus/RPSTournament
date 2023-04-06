@@ -12,7 +12,8 @@ import rockpaperscissorstournament.RPSMove;
 
 public class PredictorBot implements RPSBot {
     // Predicts the next move of the opponent based on the last X moves
-    private final int PREDICTION_LENGTH = 5;
+    private static final int PREDICTION_LENGTH = 5;
+    private static final float TIE_THRESHOLD = 0.2f;
 
     // Stores the last 2X+1 moves, where X is the prediction length
     // Format: [myMove, opponentMove, myMove, opponentMove, ... myMove]
@@ -59,7 +60,7 @@ public class PredictorBot implements RPSBot {
             }
         }
 
-        if (maxWinChance < 0.33)
+        if (maxWinChance < TIE_THRESHOLD)
             return maxTieChanceMove;
 
         return maxWinChanceMove;
