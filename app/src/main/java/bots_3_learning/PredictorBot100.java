@@ -1,18 +1,13 @@
 package bots_3_learning;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
-
 import rockpaperscissorstournament.RPSBot;
 import rockpaperscissorstournament.RPSMove;
 
-public class PredictorBot implements RPSBot {
+import java.util.*;
+
+public class PredictorBot100 implements RPSBot {
     // Predicts the next move of the opponent based on the last X moves
-    private static final int PREDICTION_LENGTH = 5;
+    private static final int PREDICTION_LENGTH = 100;
     private static final float TIE_THRESHOLD = 0.2f;
 
     // Stores the last 2X+1 moves, where X is the prediction length
@@ -24,7 +19,7 @@ public class PredictorBot implements RPSBot {
     private Queue<RPSMove> lastMoves = new LinkedList<>();
 
     public String getName() {
-        return "PredictorBot";
+        return "PredictorBot100";
     }
 
     @Override
